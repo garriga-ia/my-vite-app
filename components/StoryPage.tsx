@@ -12,12 +12,13 @@ interface StoryPageProps {
 const StoryPage: React.FC<StoryPageProps> = ({ page, onNavigate, onRestart }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
+
   useEffect(() => {
     setImageLoaded(false);
     const timer = setTimeout(() => {
       // Preload image before fading in
       const img = new Image();
-      img.src = page.image;
+      img.src = `${import.meta.env.BASE_URL}images/${page.image.split('/').pop()}`;
       img.onload = () => {
         setImageLoaded(true);
       };
@@ -25,11 +26,12 @@ const StoryPage: React.FC<StoryPageProps> = ({ page, onNavigate, onRestart }) =>
     return () => clearTimeout(timer);
   }, [page.id, page.image]);
 
+
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 w-full max-w-4xl mx-auto">
       <img
         key={page.id} // Add key to force re-render and re-trigger transition
-        src={page.image}
+        src={`${import.meta.env.BASE_URL}images/${page.image.split('/').pop()}`}
         alt={page.title}
         className={`w-full h-auto max-h-96 object-contain rounded-xl shadow-lg mb-8 transition-opacity duration-1000 ease-in-out ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
