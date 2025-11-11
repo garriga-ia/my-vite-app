@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Page } from '../types';
 import ChoiceButton from './ChoiceButton';
 
@@ -10,33 +9,17 @@ interface StoryPageProps {
 }
 
 const StoryPage: React.FC<StoryPageProps> = ({ page, onNavigate, onRestart }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-
-  useEffect(() => {
-    setImageLoaded(false);
-    const timer = setTimeout(() => {
-      // Preload image before fading in
-      const img = new Image();
-      img.src = `${import.meta.env.BASE_URL}images/${page.image}`;
-      img.onload = () => {
-        setImageLoaded(true);
-      };
-    }, 100); // short delay to allow transition
-    return () => clearTimeout(timer);
-  }, [page.id, page.image]);
-
+  const imageUrl = `${import.meta.env.BASE_URL}images/${page.image}`;
 
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 w-full max-w-4xl mx-auto">
-      <img
-        key={page.id} // Add key to force re-render and re-trigger transition
-        src={`${import.meta.env.BASE_URL}images/${page.image}`}
-        alt={page.title}
-        className={`w-full h-auto max-h-96 object-contain rounded-xl shadow-lg mb-8 transition-opacity duration-1000 ease-in-out ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-      />
+      {page.image && (
+        <img
+          src={imageUrl}
+          alt={page.title}
+          className="w-full h-auto max-h-96 object-contain rounded-xl shadow-lg mb-8"
+        />
+      )}
       <div className="text-gray-800">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-purple-800">{page.title}</h1>
         <p className="text-xl md:text-2xl leading-loose whitespace-pre-line">{page.text}</p>
