@@ -18,7 +18,7 @@ const StoryPage: React.FC<StoryPageProps> = ({ page, onNavigate, onRestart }) =>
     const timer = setTimeout(() => {
       // Preload image before fading in
       const img = new Image();
-      img.src = `${import.meta.env.BASE_URL}images/${page.image.split('/').pop()}`;
+      img.src = `${import.meta.env.BASE_URL}images/${page.image}`;
       img.onload = () => {
         setImageLoaded(true);
       };
@@ -31,7 +31,7 @@ const StoryPage: React.FC<StoryPageProps> = ({ page, onNavigate, onRestart }) =>
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 w-full max-w-4xl mx-auto">
       <img
         key={page.id} // Add key to force re-render and re-trigger transition
-        src={`${import.meta.env.BASE_URL}images/${page.image.split('/').pop()}`}
+        src={`${import.meta.env.BASE_URL}images/${page.image}`}
         alt={page.title}
         className={`w-full h-auto max-h-96 object-contain rounded-xl shadow-lg mb-8 transition-opacity duration-1000 ease-in-out ${
           imageLoaded ? 'opacity-100' : 'opacity-0'
