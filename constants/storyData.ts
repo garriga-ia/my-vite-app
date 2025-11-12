@@ -5,7 +5,7 @@ export const storyData: Page[] = [
     id: 0,
     title: "L'Aventura Màgica de la Ivet",
     text: "Una història interactiva on les teves decisions canvien el destí del bosc màgic.\n\nFes clic per començar l'aventura!",
-    image: getImageUrl('illustration-cover.jpg')
+    image: 'https://files.catbox.moe/0qnjma.jpg'
     choices: [
       { text: 'Començar Aventura', goToPage: 1 },
     ],
@@ -14,7 +14,7 @@ export const storyData: Page[] = [
     id: 1,
     title: 'DESCOBRIMENT DEL PROBLEMA',
     text: "La Ivet camina pel seu bosc màgic preferit amb la seva vareta a la mà. Avui alguna cosa va malament. Les flors que sempre brillaven amb colors intensos ara semblen apagades i grises. Intenta fer un encanteri senzill per illuminar un camí, però la seva vareta només fa unes guspires febles. \"Que estrany!\", pensa preocupada. Una esquirol s'acosta corrents. \"Bruixa Ivet, la màgia del bosc està desapareixent! Les criatures estem perdent les nostres habilitats especials.\" La Ivet mira al seu voltant i s'adona que té raó. Ha de descobrir què està passant abans que sigui massa tard.",
-    image: getImageUrl('illustration-1.jpg')
+    image: 'https://files.catbox.moe/7ae499.jpg'
     choices: [
       { text: 'Seguir el rastre de màgia perduda', goToPage: 2 },
       { text: "Buscar ajuda de la Gran Òliba sàvia", goToPage: 3 },
